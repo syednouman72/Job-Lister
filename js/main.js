@@ -2,14 +2,17 @@ import $ from 'jquery';
 import json from '../data/data.json'
 
 $(function() {
+    let chosenFilters = [];
+
     const listingData = json;
     const jobsContainer = $('.listingCards');
-    console.log(listingData[0].company);
+    const filtersContainer = $('.filtersContainer');
+    $('.filtersContainer').hide();
 
 
     function createJob(data) {
-        const languagesFilters = data.languages.map(language => `<div class="filter">${language}</div>`).join('');
-        const toolsFilters = data.tools.map(tool => `<div class="filter">${tool}</div>`).join('');
+        const languagesFilters = data.languages.map(language => `<div class="filter" data-filter="${language}">${language}</div>`).join('');
+        const toolsFilters = data.tools.map(tool => `<div class="filter" data-filter="${tool}">${tool}</div>`).join('');
         return `
             <div class="job">
                 <div class="job__delete">x</div>
@@ -35,11 +38,72 @@ $(function() {
         `
     }
 
+    function createFilterElement(filter) {
+        return `
+        <div data-filter="${filter}" class="jobFilter">
+            <p class="jobFilter__text">${filter}</p>
+            <div class="jobFilter__delete">x</div>
+        </div>
+        `
+    }
+
+    function filterJobs() {
+        const filteredJobs = listingData.filter(job => {
+            const tags = [...job.languages, ...job.tools]; 
+            return chosenFilters.every(filter => tags.includes(filter)); 
+        });
+    
+        jobsContainer.empty();
+    
+        loadJobs(filteredJobs);
+    }
+
     function loadJobs(data) {
         data.forEach(job => {
             jobsContainer.append(createJob(job));
         });
     }
+
+    $(document).on('click', '.filter', function() {
+        const filter = $(this).data('filter');
+        const filterIndex = chosenFilters.indexOf(filter);
+
+        if (filterIndex === -1) {
+            chosenFilters.push(filter);
+           filtersContainer.prepend(createFilterElement(filter));
+           $('.filtersContainer').show();
+        } else {
+            chosenFilters.splice(filterIndex, 1);
+            $(`.jobFilter[data-filter="${filter}"]`).remove();
+            if (chosenFilters.length === 0) {
+                $('.filtersContainer').hide();
+            }
+        }
+
+        // Update filter UI
+        // updateFilterUI();
+
+        filterJobs();
+    });
+
+    $(document).on('click', '.jobFilter__delete', function() {
+        const filter = $(this).parent().data('filter');
+        const filterIndex = chosenFilters.indexOf(filter);
+
+        chosenFilters.splice(filterIndex, 1);
+        if (chosenFilters.length === 0) {
+            $('.filtersContainer').hide();
+        }
+        $(`.jobFilter[data-filter="${filter}"]`).remove();
+
+        filterJobs();
+    }); 
+
+    $(document).on('click', '.clearFilters', function() {
+        chosenFilters = [];
+        $('.filtersContainer').hide();
+        filterJobs();
+    }); 
 
     loadJobs(listingData);
 });
