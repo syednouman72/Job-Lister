@@ -14,7 +14,7 @@ $(function() {
         const languagesFilters = data.languages.map(language => `<div class="filter" data-filter="${language}">${language}</div>`).join('');
         const toolsFilters = data.tools.map(tool => `<div class="filter" data-filter="${tool}">${tool}</div>`).join('');
         return `
-            <div class="job">
+            <div data-id="${data.id}" class="job">
                 <div class="job__delete">x</div>
                 <img src="${data.logo}" alt="Company Logo" class="job__image">
                 <div class="job__information ml-10">
@@ -37,6 +37,11 @@ $(function() {
             </div>
         `
     }
+
+    $(document).on('click', '.job__delete', function() {
+        const jobId = $(this).closest('.job').data('id'); 
+        $(`.job[data-id="${jobId}"]`).hide();
+    });
 
     function createFilterElement(filter) {
         return `
@@ -79,10 +84,6 @@ $(function() {
                 $('.filtersContainer').hide();
             }
         }
-
-        // Update filter UI
-        // updateFilterUI();
-
         filterJobs();
     });
 
