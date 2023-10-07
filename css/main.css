@@ -1,0 +1,32 @@
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+:root {
+    --dark-cyan:  hsl(180, 29%, 50%);
+    --background-cyan: hsl(180, 52%, 96%);
+    --filter-cyan: hsl(180, 31%, 95%);
+    --grayish-cyan: hsl(180, 8%, 52%);
+    --darker-cyan: hsl(180, 14%, 20%);
+}
+
+html {
+    font-family: 'Spartan', sans-serif;
+}
+
+.header{
+    height: 13rem;
+    background-color: var(--dark-cyan);
+    background-image: url("/images/bg-header-mobile.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+main{
+    background-color: var(--background-cyan);
+    min-height: calc(100vh - 13rem);
+    padding: 4rem 0;
+}
