@@ -35,7 +35,7 @@ body {
 main{
     background-color: var(--background-cyan);
     min-height: calc(100vh - 13rem);
-    padding: 4rem 0;
+    padding: 4rem;
 }
 
 .inline-block {
@@ -76,9 +76,9 @@ main{
 
 /*!-------------------------------------------CARD-------------------------------------------*/
 
-.listingCards {
+/* .listingCards {
     padding: 0 50px;
-}
+} */
 
 .job {
     display: flex;
@@ -173,7 +173,6 @@ main{
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    /* margin-bottom: 50px; */
     border-radius: 5px;
     background-color: var(--filter-cyan);
     transition: all 0.3s ease-in-out;
@@ -189,12 +188,12 @@ main{
 
 @media screen and (max-width: 768px){
     main {
-        padding: 2rem 0;
+        padding: 2rem;
     }
 
-    .listingCards {
+    /* .listingCards {
         padding: 0 25px;
-    }
+    } */
 
     .job {
         flex-direction: column;
@@ -246,3 +245,74 @@ main{
 }
 
 /*!-------------------------------------------ADD JOB ENDS-------------------------------------------*/
+
+/*!-------------------------------------------FILTERS-------------------------------------------*/
+
+/* .filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 50px;
+    border-radius: 5px;
+    background-color: var(--filter-cyan);
+    transition: all 0.3s ease-in-out;
+    color: var(--dark-cyan);
+    font-weight: 700;
+} */
+
+.filtersContainer {
+    padding: 1rem 3rem 1rem 1rem;
+    background-color: #fff;
+    border-radius: 15px;
+    margin-top: -5rem;
+    margin-bottom: 5rem;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  
+  .jobFilter {
+    margin: 0;
+    cursor: default;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background-color: var(--filter-cyan);
+    padding: 5px;
+    border-radius: 10px;
+    color: var(--dark-cyan);
+    font-weight: 700;
+  }
+
+  .jobFilter__delete {
+    height: 100%;
+    width: 100%;
+    font-size: 20px;
+    background-color: var(--dark-cyan);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  .jobFilter__delete:hover {
+    background-color: var(--darker-cyan);
+  }
+
+  .clearFilters {
+    /*underline*/
+    text-decoration: underline;
+    color: var(--dark-cyan);
+    font-weight: 700;
+    cursor: pointer;
+    margin-left: auto;
+  }
+  
+
+/*!-------------------------------------------FILTERS END-------------------------------------------*/
+
+
+
