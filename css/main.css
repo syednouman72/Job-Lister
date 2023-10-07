@@ -314,5 +314,100 @@ main{
 
 /*!-------------------------------------------FILTERS END-------------------------------------------*/
 
+/*!-------------------------------------------POPUP-------------------------------------------*/
+
+/* Style the job details popup */
+.job-details-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 10px;
+    z-index: 1000; /* Ensure it's above other content */
+    /* max-width: 80%; */
+    border-radius: 10px;
+}
+
+.popup-content {
+    /* Style the content inside the popup */
+    display: flex;
+    flex-direction: column;
+    gap: 20px ;
+    /* justify-content: center; */
+    /* align-items: center; */
+    padding: 25px;
+}
+
+.popup-content img {
+    width: 80px;
+    height: 80px;
+    margin: 0;
+    /* margin-bottom: 2rem; */
+}
+
+.popup-content .job__filters {
+    margin-left: 0;
+}
+
+.job__description {
+    color: var(--grayish-cyan);
+    font-size: 0.9rem;
+    line-height: 1.3rem;
+}
+
+.job__callToAction {
+    background-color: var(--dark-cyan);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    outline: none;
+    box-shadow: none;
+}
+
+.job__callToAction:hover {
+    background-color: var(--darker-cyan);
+}
+
+.close-popup {
+    cursor: pointer;
+    color: #333;
+    float: right;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #CE3838; 
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    z-index: 999; /* Ensure it's below the popup but above other content */
+}
+
+/* Apply a blur effect to the rest of the screen when the popup is open */
+.job-details-popup.active {
+    display: block;
+}
+
+.overlay.active {
+    display: block;
+    backdrop-filter: blur(5px); /* Apply a blur effect */
+}
+
+
+/*!-------------------------------------------POPUP END-------------------------------------------*/
+
+
 
 

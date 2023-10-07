@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import json from '../data/data.json'
 
-$(function() {
+$(function () {
     let chosenFilters = [];
 
     const listingData = json;
@@ -38,8 +38,8 @@ $(function() {
         `
     }
 
-    $(document).on('click', '.job__delete', function() {
-        const jobId = $(this).closest('.job').data('id'); 
+    $(document).on('click', '.job__delete', function () {
+        const jobId = $(this).closest('.job').data('id');
         $(`.job[data-id="${jobId}"]`).hide();
     });
 
@@ -54,12 +54,12 @@ $(function() {
 
     function filterJobs() {
         const filteredJobs = listingData.filter(job => {
-            const tags = [...job.languages, ...job.tools]; 
-            return chosenFilters.every(filter => tags.includes(filter)); 
+            const tags = [...job.languages, ...job.tools];
+            return chosenFilters.every(filter => tags.includes(filter));
         });
-    
+
         jobsContainer.empty();
-    
+
         loadJobs(filteredJobs);
     }
 
@@ -69,14 +69,14 @@ $(function() {
         });
     }
 
-    $(document).on('click', '.filter', function() {
+    $(document).on('click', '.filter', function () {
         const filter = $(this).data('filter');
         const filterIndex = chosenFilters.indexOf(filter);
 
         if (filterIndex === -1) {
             chosenFilters.push(filter);
-           filtersContainer.prepend(createFilterElement(filter));
-           $('.filtersContainer').show();
+            filtersContainer.prepend(createFilterElement(filter));
+            $('.filtersContainer').show();
         } else {
             chosenFilters.splice(filterIndex, 1);
             $(`.jobFilter[data-filter="${filter}"]`).remove();
@@ -87,7 +87,7 @@ $(function() {
         filterJobs();
     });
 
-    $(document).on('click', '.jobFilter__delete', function() {
+    $(document).on('click', '.jobFilter__delete', function () {
         const filter = $(this).parent().data('filter');
         const filterIndex = chosenFilters.indexOf(filter);
 
@@ -98,13 +98,75 @@ $(function() {
         $(`.jobFilter[data-filter="${filter}"]`).remove();
 
         filterJobs();
-    }); 
+    });
 
-    $(document).on('click', '.clearFilters', function() {
+    $(document).on('click', '.clearFilters', function () {
         chosenFilters = [];
         $('.filtersContainer').hide();
         filterJobs();
-    }); 
+    });
+
+    $(document).on('click', '.job', function () {
+        const jobId = $(this).data('id'); 
+        const job = findJobById(jobId); 
+        if (job) {
+            openJobDetailsPopup(job); 
+        }
+    });
+
+    $(document).on('click', '.close-popup', function () {
+        closeJobDetailsPopup();
+    });
+
+    function openJobDetailsPopup(job) {
+        const popupContent = $('.popup-content');
+        const languagesFilters = job.languages.map(language => `<div class="filter" data-filter="${language}">${language}</div>`).join('');
+        const toolsFilters = job.tools.map(tool => `<div class="filter" data-filter="${tool}">${tool}</div>`).join('');
+        popupContent.html(`
+        <img src="${job.logo}" alt="Company Logo" class="job__image">
+        <div class="job__information ml-10">
+          <p class="job__information__company inline-block mb-10">${job.company}</p>
+          ${job.new ? '<span class="job__information__new">New!</span>' : ''}
+                ${job.featured ? '<span class="job__information__featured">Featured</span>' : ''}
+                <h3 class="job__information__position mb-10">${job.position}</h3>
+                <div class="job__information__details">
+                    <p class="job__information__details__postedAt">${job.postedAt}</p>
+                    <span class="job__information__details__separator"></span>
+                    <p class="job__information__details__contract">${job.contract}</p>
+                    <span class="job__information__details__separator"></span>
+                    <p class="job__information__details__location">${job.location}</p>
+                </div>
+                </div>
+                <div class="job__filters">
+                ${languagesFilters}
+                ${toolsFilters}
+                </div>
+        <p class="job__description">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+          Vero velit doloremque dolores ex dolorem ipsum, deleniti 
+          non ea maiores quisquam illum omnis sint animi voluptatum 
+          iure ipsa repudiandae fugiat veniam. Debitis quisquam doloremque, 
+          labore earum vel nostrum temporibus cupiditate error ipsum natus explicabo. 
+         </p>
+        <a class="job__callToAction">Apply Now!</a>
+      <span class="close-popup">Close</span>
+        </div>
+        `);
+        $('.job-details-popup').show(); 
+        $('.overlay').show(); 
+    }
+
+    function closeJobDetailsPopup() {
+        $('.job-details-popup').hide();
+        $('.overlay').hide(); 
+    }
+
+    function findJobById(jobId) {
+        return listingData.find(job => job.id === jobId);
+    }
+
 
     loadJobs(listingData);
+
+
 });
