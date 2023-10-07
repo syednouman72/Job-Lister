@@ -220,3 +220,22 @@ main{
 }
 
 /*!-------------------------------------------CARD ENDS-------------------------------------------*/
+
+.addJob {
+    position: fixed;
+    bottom: 20px; /* Adjust this value to change the vertical position */
+    right: 20px; /* Adjust this value to change the horizontal position */
+    width: 50px; /* Set the width and height to the same value to create a round button */
+    height: 50px; /* Set the width and height to the same value to create a round button */
+    background-color: var(--dark-cyan); /* Button background color */
+    color: #fff; /* Button text color */
+    border: none;
+    border-radius: 50%; /* This property creates a round shape */
+    cursor: pointer;
+    font-size: 30px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.addJob:hover {
+    background-color: var(--darker-cyan);
+}
