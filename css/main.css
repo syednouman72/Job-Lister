@@ -85,6 +85,7 @@ main{
     align-items: center;
     background-color: white;
     padding: 20px;
+    margin-bottom: 40px;
     border-radius: 10px;
     position: relative;
     /*shadow*/
@@ -221,6 +222,8 @@ main{
 
 /*!-------------------------------------------CARD ENDS-------------------------------------------*/
 
+
+/*!-------------------------------------------ADD JOB-------------------------------------------*/
 .addJob {
     position: fixed;
     bottom: 20px; /* Adjust this value to change the vertical position */
@@ -233,9 +236,13 @@ main{
     border-radius: 50%; /* This property creates a round shape */
     cursor: pointer;
     font-size: 30px;
+    outline: none;
     transition: background-color 0.3s ease-in-out;
 }
 
 .addJob:hover {
     background-color: var(--darker-cyan);
+    border: none;
 }
+
+/*!-------------------------------------------ADD JOB ENDS-------------------------------------------*/
