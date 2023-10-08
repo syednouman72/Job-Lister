@@ -39,9 +39,10 @@ $(function () {
         `
     }
 
-    $(document).on('click', '.job__delete', function () {
+    $(document).on('click', '.job__delete', function (e) {
         const jobId = $(this).closest('.job').data('id');
         $(`.job[data-id="${jobId}"]`).hide();
+        e.stopPropagation();
     });
 
     function createFilterElement(filter) {
