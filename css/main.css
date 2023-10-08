@@ -225,6 +225,18 @@ main{
         width: 70px;
         height: 70px; 
     }
+
+    .popup {
+        width: 98vw;
+    }
+
+    .job-create-popup__content {
+        padding: 10px;
+    }
+
+    .popup-content {
+        padding: 5px!important;
+    }
    
 }
 
