@@ -9,7 +9,7 @@
   "license": "",
   "author": "",
   "scripts": {
-    "build": "parcel build index.html && parcel build images/*",
+    "build": "parcel build index.html images/*",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "dev": "npm run build-img && parcel index.html --open",
