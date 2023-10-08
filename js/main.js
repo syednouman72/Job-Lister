@@ -17,7 +17,7 @@ $(function () {
         return `
             <div data-id="${data.id}" class="job">
                 <div class="job__delete">x</div>
-                <img src="${data.logo}" alt="Company Logo" class="job__image">
+                <img src="./images/${data.logo}" alt="Company Logo" class="job__image">
                 <div class="job__information ml-10">
                 <p class="job__information__company inline-block mb-10">${data.company}</p>
                 ${data.new ? '<span class="job__information__new">New!</span>' : ''}
@@ -126,7 +126,7 @@ $(function () {
         const languagesFilters = job.languages.map(language => `<div class="filter" data-filter="${language}">${language}</div>`).join('');
         const toolsFilters = job.tools.map(tool => `<div class="filter" data-filter="${tool}">${tool}</div>`).join('');
         popupContent.html(`
-        <img src="${job.logo}" alt="Company Logo" class="job__image">
+        <img src="./images/${job.logo}" alt="Company Logo" class="job__image">
         <div class="job__information ml-10">
           <p class="job__information__company inline-block mb-10">${job.company}</p>
           ${job.new ? '<span class="job__information__new">New!</span>' : ''}
