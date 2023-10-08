@@ -52,40 +52,124 @@
     </section>
   </main>
   <button class="addJob">+</button>
-  <div class="job-details-popup">
+  <div class="job-details-popup popup">
     <div class="popup-content">
       <!-- <img src="images/photosnap.svg" alt="Company Logo" class="job__image">
-        <div class="job__information ml-10">
-          <p class="job__information__company inline-block mb-10">Photosnap</p>
-          <span class="job__information__new">New!</span>
-          <span class="job__information__featured">Featured</span>
-          <h3 class="job__information__position mb-10">Senior frontend developer</h3>
-          <div class="job__information__details">
-            <p class="job__information__details__postedAt">1d ago</p>
-            <span class="job__information__details__separator"></span>
-            <p class="job__information__details__contract">Full Time</p>
-            <span class="job__information__details__separator"></span>
-            <p class="job__information__details__location">USA Only</p>
-          </div>
+      <div class="job__information ml-10">
+        <p class="job__information__company inline-block mb-10">Photosnap</p>
+        <span class="job__information__new">New!</span>
+        <span class="job__information__featured">Featured</span>
+        <h3 class="job__information__position mb-10">Senior frontend developer</h3>
+        <div class="job__information__details">
+          <p class="job__information__details__postedAt">1d ago</p>
+          <span class="job__information__details__separator"></span>
+          <p class="job__information__details__contract">Full Time</p>
+          <span class="job__information__details__separator"></span>
+          <p class="job__information__details__location">USA Only</p>
         </div>
-        <div class="job__filters">
-          <div class="filter">HTML</div>
-          <div class="filter">CSS</div>
-          <div class="filter">React</div>
-          <div class="filter">Django</div>
-        </div>
-        <p class="job__description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-          Vero velit doloremque dolores ex dolorem ipsum, deleniti 
-          non ea maiores quisquam illum omnis sint animi voluptatum 
-          iure ipsa repudiandae fugiat veniam. Debitis quisquam doloremque, 
-          labore earum vel nostrum temporibus cupiditate error ipsum natus explicabo. 
-         </p>
-        <a class="job__callToAction">Apply Now!</a>
+      </div>
+      <div class="job__filters">
+        <div class="filter">HTML</div>
+        <div class="filter">CSS</div>
+        <div class="filter">React</div>
+        <div class="filter">Django</div>
+      </div>
+      <p class="job__description">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Vero velit doloremque dolores ex dolorem ipsum, deleniti
+        non ea maiores quisquam illum omnis sint animi voluptatum
+        iure ipsa repudiandae fugiat veniam. Debitis quisquam doloremque,
+        labore earum vel nostrum temporibus cupiditate error ipsum natus explicabo.
+      </p>
+      <a class="job__callToAction">Apply Now!</a> -->
       <span class="close-popup">Close</span>
-  </div> -->
     </div>
-    <div class="overlay"></div>
+  </div>
+
+  <div class="job-create-popup popup">
+    <div class="job-create-popup__content p-20">
+      <h2 class="job-create-popup__title mb-10">Add New Job</h2>
+      <span class="close-popup createJob__close-popup">Close</span>
+
+      <div class="form-group mb-10">
+        <label for="company" class="label-heading mb-10">Company:</label>
+        <select id="company" name="company" class="companiesDropdown"></select>
+      </div>
+
+       <div class="form-group mb-10">
+        <label for="role" class="label-heading mb-10">Role:</label> 
+        <input type="radio" name="role" id="frontend" value="Frontend">
+        <label for="frontend">Frontend</label>
+        <input type="radio" name="role" id="backend" value="Backend">
+        <label for="backend">Backend</label>
+        <input type="radio" name="role" id="fullstack" value="Fullstack">
+        <label for="fullstack">Fullstack</label>
+        </div>
+
+        <div class="form-group mb-10">
+          <label for="role" class="label-heading mb-10">Contract:</label> 
+          <input type="radio" name="contract" id="fulltime" value="Full Time">
+          <label for="full-time">Full Time</label>
+          <input type="radio" name="contract" id="remote" value="Remote">
+          <label for="remote">Remote</label>
+          <input type="radio" name="contract" id="hourly" value="Hourly">
+          <label for="hourly">Hourly</label>
+          </div>
+
+          <div class="form-group mb-10">
+            <label for="company" class="label-heading mb-10">Location:</label>
+            <select id="company" name="company" class="locationDropdown">
+              <option value="Pakistan">Pakistan</option>
+              <option value="USA">USA</option>
+              <option value="Europe">Europe</option>
+              <option value="Canada">Canada</option>
+            </select>
+          </div>
+
+      <div class="form-group mb-10">
+          <label for="level" class="label-heading mb-10">Level:</label>
+          <input type="radio" name="level" id="junior" value="Junior">
+          <label for="junior">Junior</label>
+          <input type="radio" name="level" id="midweight" value="Midweight">
+          <label for="midweight">Midweight</label>
+          <input type="radio" name="level" id="senior" value="Senior">
+          <label for="senior">Senior</label>
+      </div>
+
+      <div class="form-group mb-10">
+          <label class="label-heading mb-10">Languages:</label>
+          <input type="checkbox" name="languages" value="Python">
+          <label for="python">Python</label>
+          <input type="checkbox" name="languages" value="Ruby">
+          <label for="ruby">Ruby</label>
+          <input type="checkbox" name="languages" value="JavaScript">
+          <label for="javascript">JavaScript</label>
+          <input type="checkbox" name="languages" value="HTML">
+          <label for="html">HTML</label>
+          <input type="checkbox" name="languages" value="CSS">
+          <label for="css">CSS</label>
+      </div>
+
+      <div class="form-group">
+          <label class="label-heading mb-10">Tools:</label>
+          <input type="checkbox" name="tools" value="React">
+          <label for="react">React</label>
+          <input type="checkbox" name="tools" value="Sass">
+          <label for="sass">Sass</label>
+          <input type="checkbox" name="tools" value="Vue">
+          <label for="vue">Vue</label>
+          <input type="checkbox" name="tools" value="Django">
+          <label for="django">Django</label>
+          <input type="checkbox" name="tools" value="RoR">
+          <label for="ror">RoR</label>
+      </div>
+
+
+      <p class="create-job__error my-10">Incorrect input, please select a value in all fields!</p>
+      <a class="create-job__button btn">Add Job</a>
+    </div>
+  </div>
+  <div class="overlay"></div>
 </body>
 
 </html>

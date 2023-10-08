@@ -7,6 +7,7 @@ $(function () {
     const listingData = json;
     const jobsContainer = $('.listingCards');
     const filtersContainer = $('.filtersContainer');
+    const companiesDropdown = $('.companiesDropdown');
     $('.filtersContainer').hide();
 
 
@@ -69,7 +70,7 @@ $(function () {
         });
     }
 
-    $(document).on('click', '.filter', function () {
+    $(document).on('click', '.filter', function (e) {
         const filter = $(this).data('filter');
         const filterIndex = chosenFilters.indexOf(filter);
 
@@ -85,6 +86,7 @@ $(function () {
             }
         }
         filterJobs();
+        e.stopPropagation();
     });
 
     $(document).on('click', '.jobFilter__delete', function () {
@@ -113,6 +115,7 @@ $(function () {
             openJobDetailsPopup(job); 
         }
     });
+
 
     $(document).on('click', '.close-popup', function () {
         closeJobDetailsPopup();
@@ -148,13 +151,15 @@ $(function () {
           iure ipsa repudiandae fugiat veniam. Debitis quisquam doloremque, 
           labore earum vel nostrum temporibus cupiditate error ipsum natus explicabo. 
          </p>
-        <a class="job__callToAction">Apply Now!</a>
+        <a class="job__callToAction btn">Apply Now!</a>
       <span class="close-popup">Close</span>
         </div>
         `);
         $('.job-details-popup').show(); 
         $('.overlay').show(); 
     }
+
+
 
     function closeJobDetailsPopup() {
         $('.job-details-popup').hide();
@@ -164,6 +169,93 @@ $(function () {
     function findJobById(jobId) {
         return listingData.find(job => job.id === jobId);
     }
+
+    $(document).on('click', '.addJob', function () {
+        $('.job-create-popup').show();
+        $('.overlay').show();
+        listingData.forEach(job => {
+            companiesDropdown.append(`<option value="${job.id}">${job.company}</option>`);
+        });
+
+    });
+
+    function createNewJob() {
+        const company = $('#company').val();
+        const role = $('input[name="role"]:checked').val();
+        const level = $('input[name="level"]:checked').val();
+        const languages = $('input[name="languages"]:checked').map(function () {
+          return $(this).val();
+        }).get();
+        const tools = $('input[name="tools"]:checked').map(function () {
+          return $(this).val();
+        }).get();
+        const contract = $('input[name="contract"]:checked').val();
+        const location = $('.locationDropdown').val(); 
+
+
+        const companyName = listingData[company - 1].company;
+        const companyImage = listingData[company - 1].logo;
+      
+        const maxId = Math.max(...listingData.map(job => job.id));
+        const newJobId = maxId + 1;
+      
+        const newJob = {
+          id: newJobId,
+          company: companyName,
+          logo: companyImage,  
+          new: true, 
+          featured: false, 
+          position: level + ' ' + role + ' Developer', 
+          role: role,
+          level: level,
+          postedAt: 'Just now', 
+          contract: contract, 
+          location: location, 
+          languages: languages,
+          tools: tools,
+        };
+
+        jobsContainer.append(createJob(newJob));
+    }
+
+    function closeJobCreatePopup() {
+        $('#company').val('');
+        $('input[name="role"]').prop('checked', false);
+        $('input[name="contract"]').prop('checked', false);
+        $('input[name="level"]').prop('checked', false);
+        $('input[name="languages"]').prop('checked', false);
+        $('input[name="tools"]').prop('checked', false);
+        $('.job-create-popup').hide();
+        $('.overlay').hide();
+    }
+
+    $(document).on('click', '.createJob__close-popup', function () {
+        closeJobCreatePopup();
+    });
+
+    $(document).on('click', '.create-job__button', function () {
+        const company = $('#company').val();
+        const role = $('input[name="role"]:checked').val();
+        const level = $('input[name="level"]:checked').val();
+        const languages = $('input[name="languages"]:checked').map(function () {
+          return $(this).val();
+        }).get();
+        const tools = $('input[name="tools"]:checked').map(function () {
+          return $(this).val();
+        }).get();
+        const contract = $('input[name="contract"]:checked').val(); 
+        const location = $('.locationDropdown').val(); 
+      
+        if (!company || !role || !level || !contract || !location || languages.length === 0 || tools.length === 0) {
+          $('.create-job__error').show();
+          return;
+        }
+      
+        $('.create-job__error').hide();
+
+        createNewJob();
+        closeJobCreatePopup();
+    });
 
 
     loadJobs(listingData);

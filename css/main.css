@@ -74,6 +74,15 @@ main{
     margin-top: 20px;
 }
 
+.p-20 {
+    padding: 20px;
+}
+
+.my-10 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 /*!-------------------------------------------CARD-------------------------------------------*/
 
 /* .listingCards {
@@ -225,14 +234,14 @@ main{
 /*!-------------------------------------------ADD JOB-------------------------------------------*/
 .addJob {
     position: fixed;
-    bottom: 20px; /* Adjust this value to change the vertical position */
-    right: 20px; /* Adjust this value to change the horizontal position */
-    width: 50px; /* Set the width and height to the same value to create a round button */
-    height: 50px; /* Set the width and height to the same value to create a round button */
-    background-color: var(--dark-cyan); /* Button background color */
-    color: #fff; /* Button text color */
+    bottom: 20px; 
+    right: 20px; 
+    width: 50px; 
+    height: 50px;
+    background-color: var(--dark-cyan); 
+    color: #fff; 
     border: none;
-    border-radius: 50%; /* This property creates a round shape */
+    border-radius: 50%; 
     cursor: pointer;
     font-size: 30px;
     outline: none;
@@ -248,18 +257,6 @@ main{
 
 /*!-------------------------------------------FILTERS-------------------------------------------*/
 
-/* .filters {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    margin-bottom: 50px;
-    border-radius: 5px;
-    background-color: var(--filter-cyan);
-    transition: all 0.3s ease-in-out;
-    color: var(--dark-cyan);
-    font-weight: 700;
-} */
 
 .filtersContainer {
     padding: 1rem 3rem 1rem 1rem;
@@ -316,27 +313,26 @@ main{
 
 /*!-------------------------------------------POPUP-------------------------------------------*/
 
-/* Style the job details popup */
 .job-details-popup {
     display: none;
+
+}
+
+.popup {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #fff;
     padding: 10px;
-    z-index: 1000; /* Ensure it's above other content */
-    /* max-width: 80%; */
+    z-index: 1000; 
     border-radius: 10px;
 }
 
 .popup-content {
-    /* Style the content inside the popup */
     display: flex;
     flex-direction: column;
     gap: 20px ;
-    /* justify-content: center; */
-    /* align-items: center; */
     padding: 25px;
 }
 
@@ -344,7 +340,6 @@ main{
     width: 80px;
     height: 80px;
     margin: 0;
-    /* margin-bottom: 2rem; */
 }
 
 .popup-content .job__filters {
@@ -357,7 +352,8 @@ main{
     line-height: 1.3rem;
 }
 
-.job__callToAction {
+.btn {
+    display: block;
     background-color: var(--dark-cyan);
     color: white;
     padding: 10px 20px;
@@ -368,6 +364,7 @@ main{
     transition: background-color 0.3s ease-in-out;
     outline: none;
     box-shadow: none;
+    margin-top: 10px;
 }
 
 .job__callToAction:hover {
@@ -391,22 +388,100 @@ main{
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-    z-index: 999; /* Ensure it's below the popup but above other content */
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 999; 
 }
 
-/* Apply a blur effect to the rest of the screen when the popup is open */
+
 .job-details-popup.active {
     display: block;
 }
 
 .overlay.active {
     display: block;
-    backdrop-filter: blur(5px); /* Apply a blur effect */
+    backdrop-filter: blur(5px);
 }
 
 
 /*!-------------------------------------------POPUP END-------------------------------------------*/
+
+
+.form-group input[type="checkbox"] {
+    appearance: none; 
+    width: 24px; 
+    height: 24px;
+    background-color: white;
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    cursor: pointer;
+    vertical-align: middle; 
+}
+
+.form-group input[type="checkbox"]:checked {
+    background-color: var(--dark-cyan); 
+    background-size: 100%; 
+    background-position: center; 
+    border: none; 
+}
+
+
+.form-group input[type="radio"] {
+    appearance: none; 
+    width: 24px; 
+    height: 24px;
+    border: 1px solid #ccc; 
+    border-radius: 50%;
+    background-color: #fff; 
+    cursor: pointer;
+    vertical-align: middle; 
+    overflow: none;
+    outline: none;
+}
+
+.form-group input[type="radio"]:checked {
+    background-color: var(--dark-cyan); 
+    border: none; 
+}
+
+
+
+/*!-------------------------------------------CREATE JOB POPUP-------------------------------------------*/
+
+.job-create-popup__title {
+    font-size: 2rem;
+}
+
+.job-create-popup {
+    display: none;
+}
+
+
+.label-heading {
+    display: block;
+    font-size: 1.3rem;
+}
+
+.create-job__error {
+    display: none;
+    color: #D03E3E;
+    font-size: 0.8rem;
+}
+
+select {
+    border: 1px solid #ccc; 
+    outline: none;
+    width: 100%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+
+/*!-------------------------------------------CREATE JOB POPUP END-------------------------------------------*/
+
+
+
+
 
 
 
