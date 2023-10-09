@@ -34,7 +34,7 @@ jobs:
       - name: Send POST request to Portainer webhook
         run: |
           # Replace the URL with your Portainer webhook URL
-          PORTAINER_WEBHOOK_URL="https://162.19.224.10:9443/api/webhooks/fc26e2c5-a175-4f4d-aab8-44d000a5c795"
+          PORTAINER_WEBHOOK_URL="https://162.19.224.10:9443/api/webhooks/b0e778c3-f8a8-4f86-a4f1-37f791b3939c"
 
           # Send the POST request to trigger the update (with insecure option)
           curl -k -X POST -d '{}' "$PORTAINER_WEBHOOK_URL"
